@@ -1,0 +1,66 @@
+body {
+    background-color: #373737;
+    height: 550px;
+    align-items: center;
+}
+
+nav {
+  text-align: center;
+}
+
+
+div.titulo {
+  text-align: center;
+  height: 8vw;
+}
+
+
+div.metodoDePago {
+  text-align: center;
+  height: 8vw;
+}
+
+
+
+div.separador{
+  height: 15%;
+}
+
+
+div.botonCredito{
+  align-items: center;
+  text-align: left;
+}
+
+div.botonDebito{
+  align-items: center;
+  text-align: right;
+}
+
+span.navbar-brand {
+    color: #ffa500;
+    text-align: center;
+    width: 100%;
+}
+
+div.Avatar{
+  display: flex;
+  flex-direction: row-reverse; 
+ 
+}
+
+img{
+  border-radius: 50%;
+  width: 25vw;
+  height: 25vw;
+  object-fit: cover;  
+}
+
+FONT {
+  color: azure;
+}
+
+label{
+  color: azure;
+}
+
