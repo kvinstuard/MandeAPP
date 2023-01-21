@@ -59,7 +59,16 @@ div.Recibo{
 
 }
 
+div.BotonReady{
+  display: flex;
+  flex-direction: row-reverse; 
+  
+}
 
+
+div.Final{
+  height: 15vw;
+}
 
 img{
   border-radius: 50%;
