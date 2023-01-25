@@ -6,6 +6,6 @@ const pool = new Pool({
     database: 'mandeapp',
     password: '',
     port: '5432',
-})
+});
 
 module.exports = pool;
