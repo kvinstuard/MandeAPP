@@ -20,17 +20,22 @@ app.get('/',(req, res)=>{
     res.render('mandeApp');
 });
 
-app.get('/menu/user',(req, res)=>{
+app.get('/user',(req, res)=>{
     res.render('menuUser');
 });
 
-app.get('/menu/specialist',(req, res)=>{
+app.get('/specialist',(req, res)=>{
     res.render('menuSpecialist');
 });
 
-app.get('/menu/user/singup',(req, res)=>{
+app.get('/user/singup',(req, res)=>{
     res.render('singUpUser');
 });
+
+app.get('/specialist/singup',(req, res)=>{
+    res.render('singUpSpecialist');
+});
+
 
 
 app.use('/mandeapp', personas);
