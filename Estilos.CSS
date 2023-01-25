@@ -26,6 +26,11 @@ div.separador{
   height: 15%;
 }
 
+div.botonDeLogin{
+  display: flex;
+  flex-direction: column-reverse;
+
+}
 
 div.botonCredito{
   align-items: center;
