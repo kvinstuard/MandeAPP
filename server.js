@@ -37,7 +37,7 @@ app.get('/user',(req, res)=>{
     res.render('menuUser');
 });
 
-app.get('/singup',(req, res)=>{
+app.get('/specialistSingUP',(req, res)=>{
     res.render('singUpSpecialist');
 });
 
