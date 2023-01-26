@@ -41,6 +41,10 @@ app.get('/specialistSingUP',(req, res)=>{
     res.render('singUpSpecialist');
 });
 
+app.get('/loginClient',(req, res)=>{
+    res.render('login');
+});
+
 app.get('/specialist',(req, res)=>{
     res.render('menuSpecialist');
 });
