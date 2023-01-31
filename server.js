@@ -30,7 +30,7 @@ app.get('/user',(req, res)=>{
     res.render('menuUser');
 });
 
-app.get('/user/singup',(req, res)=>{
+app.get('/userSingup',(req, res)=>{
     res.render('singUpUser');
 });
 
@@ -38,7 +38,7 @@ app.get('/specialist',(req, res)=>{
     res.render('menuSpecialist');
 });
 
-app.get('/specialist/singup',(req, res)=>{
+app.get('/specialisSingup',(req, res)=>{
     res.render('singUpSpecialist');
 });
 
@@ -46,7 +46,7 @@ app.get('/login',(req, res)=>{
     res.render('login');
 });
 
-app.post("/user/singup", (req, res)=>{
+app.post("/userSingup", (req, res)=>{
     let {inputName, inputLastName, inputIdentification, inputAddress, inputPhoneNumber, inputEmail, inputPassword}=req.body
 
     console.log({
