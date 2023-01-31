@@ -72,6 +72,7 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/userSingup', rutas);
+app.post('/specialisSingup', rutas);
 
 app.post('/login', passport.authenticate('local', {
     successRedirect: '/findSpecialist',

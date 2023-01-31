@@ -34,7 +34,12 @@
 
     <div class="container text-left">
         <div class="row py-5">
-            
+            <ul>
+                <% if(typeof errors != 'undefined') { %> <% errors.forEach(error=>{ %> 
+                    <li><%= error.message %></li>
+                <% }) %> <% } %>
+            </ul>
+   
             <div class="col">
                 <form method="POST">
                 <div class="mb-3 row">

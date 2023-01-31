@@ -17,26 +17,61 @@ const getSpecialistById = async (req, res) => {
     res.json(response.rows);
 }
 const createSpecialist = async (req, res) => {
-    if (!req.body.inputname || !req.body.inputlastn || !req.body.inputid || !req.body.inputaddres
-        || !req.body.inputphone || !req.body.inputemail || !req.body.inputpass) {
-        res.sendStatus(400).send('Llenar todos los campos');
-    }
-    let nuevo = {
+    let { inputName, inputLastName, inputIdentification, inputAddress, inputPhoneNumber, inputEmail, inputPassword } = req.body
 
-        name: req.body.inputname,
-        lastname: req.body.inputlastn,
-        id: req.body.inputid,
-        address: req.body.inputaddres,
-        phone: req.body.inputphone,
-        email: req.body.inputemail,
-        password: req.body.inputpass
-    }
-    console.log(nuevo);
+    console.log({
+        inputName,
+        inputLastName,
+        inputIdentification,
+        inputAddress,
+        inputPhoneNumber,
+        inputEmail,
+        inputPassword
+    })
 
-    const response = await pool.query(queries.createSpecialist,
-        [nuevo.name, nuevo.lastname, nuevo.id, nuevo.address, nuevo.email, nuevo.phone, nuevo.password]);
-    console.log(response);
-    res.redirect('/specialist');
+    let errors = [];
+
+    if (!inputName || !inputLastName || !inputIdentification || !inputAddress || !inputPhoneNumber || !inputEmail || !inputPassword) {
+        errors.push({ message: "Por favor rellenar todos los campos" })
+    }
+
+    if (inputPassword.length < 8) {
+        errors.push({ message: "La contraseña de minimo 8 caracateres" })
+    }
+
+    if (errors.length > 0) {
+        res.render("singUpSpecialist", { errors })
+    } else {
+
+        let hashedPassword = await bcrypt.hash(inputPassword, 10);
+
+        console.log(hashedPassword);
+
+        pool.query(queries.checkEmailExist, [inputEmail], (err, results) => {
+            if (err) {
+                throw err
+            }
+            console.log(results.rows);
+
+            if (results.rows.length > 0) {
+                errors.push({ message: 'El correo electronico ya existe' });
+                res.render('singUpSpecialist', { errors });
+            } else {
+                pool.query(queries.createSpecialist + 'RETURNING ID, password', [inputName, inputLastName,
+                    inputIdentification, inputAddress, inputPhoneNumber, inputEmail, hashedPassword], (err, results) => {
+                        if (err) {
+                            throw err;
+                        }
+                        console.log(results.rows);
+                        req.flash('success_msg', 'Ya estas registrado por favor ingresa a la app');
+                        res.redirect('/login');
+                    });
+            }
+        }
+
+        )
+
+    }
 }
 const updateSpecialist = async (req, res) => {
     const id = req.params.id;
