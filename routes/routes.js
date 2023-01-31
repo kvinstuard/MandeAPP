@@ -9,7 +9,7 @@ router.get('/user', controller.getUser);
 
 router.get('/specialist', controller.getSpecialist);
 
-router.post('/specialistSingup', controller.createSpecialist); 
+router.post('/specialisSingup', controller.createSpecialist); 
 router.post('/userSingup', controller.createUser);
 
 //router.get('/trabajador/:id', getTrabajadorById) //traer infor por cedula
