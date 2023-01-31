@@ -1,5 +1,5 @@
-const getPersonas = 'SELECT * FROM persona';
-const getPersonaByID = 'SELECT * FROM persona WHERE ID = $1'; 
+const getPersonas = 'SELECT * FROM personas';
+const getPersonaByID = 'SELECT * FROM personas WHERE ID = $1'; 
 const getTrabajador = 'SELECT * FROM trabajador';
 const getTrabajadorById = 'SELECT * FROM trabajador WHERE cedula = $1';
 const createTrabajador = 'INSERT INTO trabajador(nombre, apellido, cedula, direccion, numero_cuenta, celular, calificacion) VALUES ($1, $2, $3, $4, $5, $6, $7)';
