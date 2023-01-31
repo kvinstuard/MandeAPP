@@ -5,7 +5,7 @@ CREATE TABLE person(
   address VARCHAR(90) NOT NULL,
   email VARCHAR(90) NOT NULL,
   password VARCHAR(20) NOT NULL,
-  coordinates VARCHAR(20) NOT NULL
+  coordinates VARCHAR(20) 
 );
 
 CREATE TABLE usuario(
