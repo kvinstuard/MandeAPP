@@ -1,21 +1,21 @@
 const LocalStrategy = require('passport-local').Strategy;
-const { pool }= require('./postgreDB');
+const pool = require('./postgreDB');
 const queries = require('../routes/queries');
 const bcrypt = require('bcrypt');
 
 function initialized(passport) {
-    const authenticateUser = (inputEmail, inputPassword, done) => {
+    const autheticateUser = (email, password, done) => {
 
-        pool.query(queries.checkEmailExist, [inputEmail], (err, results) => {
+        pool.query(queries.checkEmailExist, [email], (err, results) => {
             if (err) {
                 throw err;
             }
             console.log(results.rows);
 
             if (results.rows.length > 0) {
-                const user = results.row[0];
+                const user = results.rows[0];
 
-                bcrypt.compare(inputPassword, user.inputPassword, (err, isMatch) => {
+                bcrypt.compare(password, user.password, (err, isMatch) => {
                     if (err) {
                         throw err;
                     }
@@ -34,24 +34,25 @@ function initialized(passport) {
 
     }
 
-    passport.use(new LocalStrategy({
-
-        usernameField: 'email',
-        passwordField: 'password'
-    },
-        authenticateUser
+    passport.use(
+        new LocalStrategy(
+        {
+            usernameField: 'email',
+            passwordField: 'password'
+        },
+        autheticateUser
     )
     );
 
-    passport.serializeUser((user, done)=> done(null, user.ID))
+    passport.serializeUser((user, done)=> done(null, user.id));
 
-    passport.deserializeUser((ID, done)=> {
-        pool.query(queries.getUserByID, [ID], (err, results)=>{
+    passport.deserializeUser((id, done)=> {
+        pool.query(queries.getUserByID, [id], (err, results)=>{
             if(err){
                 throw err;
             }
             return done(null, results.rows[0]);
-        })
+        });
     })
 
 }
