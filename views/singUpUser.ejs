@@ -35,12 +35,19 @@
     <div class="container text-left">
         <div class="row py-5">
 
+            <ul>
+                <% if(typeof errors != 'undefined') { %> <% errors.forEach(error=>{ %> 
+                    <li><%= error.message %></li>
+                <% }) %> <% } %>
+            </ul>
+
             <div class="col">
                 <div class="mb-3 row">
                     <div class="col">
+                    <form method="POST">
                         <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputName">
+                            <input name="inputName" type="text" class="form-control" id="inputName">
                         </div>
 
                     </div>
@@ -54,7 +61,7 @@
 
                         <label for="inputLastName" class="col-sm-2 col-form-label">Last Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputLastName">
+                            <input name="inputLastName" type="text" class="form-control" id="inputLastName">
                         </div>
 
                     </div>
@@ -69,7 +76,7 @@
 
                         <label for="inputIdentification" class="col-sm-2 col-form-label">Identification</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputIdentification">
+                            <input name="inputIdentification" type="text" class="form-control" id="inputIdentification">
                         </div>
 
                     </div>
@@ -85,7 +92,7 @@
 
                         <label for="inputAddress" class="col-sm-2 col-form-label">Address</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputAddress">
+                            <input name="inputAddress" type="text" class="form-control" id="inputAddress">
                         </div>
 
                     </div>
@@ -100,7 +107,7 @@
 
                         <label for="inputPhone" class="col-sm-2 col-form-label">Phone</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputPhone">
+                            <input name="inputPhoneNumber" type="text" class="form-control" id="inputPhone">
                         </div>
 
                     </div>
@@ -115,7 +122,7 @@
 
                         <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputEmail">
+                            <input name="inputEmail" type="text" class="form-control" id="inputEmail">
                         </div>
 
                     </div>
@@ -131,7 +138,7 @@
 
                         <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="inputPassword">
+                            <input name="inputPassword" type="password" class="form-control" id="inputPassword">
                         </div>
 
                     </div>
@@ -143,7 +150,7 @@
             <div class="col-sm-5">
 
                 <div class="Avatar">
-                    <img src="Images/avatar.jpg" alt="">
+                    <img src="../images/avatar.jpg" alt="">
                     <button type="button" class="btn btn-dark"
                         style="--bs-btn-padding-y: 0.70rem; --bs-btn-padding-x: 0.72rem; --bs-btn-font-size: 0.72rem; height: 8%;">
                         Photo
@@ -192,6 +199,7 @@
             </button>
         </div>
 
+        </form>
         <div class="Final">
 
         </div>

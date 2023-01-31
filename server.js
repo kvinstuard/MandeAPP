@@ -46,6 +46,34 @@ app.get('/login',(req, res)=>{
     res.render('login');
 });
 
+app.post("/user/singup", (req, res)=>{
+    let {inputName, inputLastName, inputIdentification, inputAddress, inputPhoneNumber, inputEmail, inputPassword}=req.body
+
+    console.log({
+        inputName, 
+        inputLastName, 
+        inputIdentification, 
+        inputAddress, 
+        inputPhoneNumber, 
+        inputEmail, 
+        inputPassword
+    })
+
+    let errors = [];
+
+    if (!inputName || !inputLastName || !inputIdentification || !inputAddress || !inputPhoneNumber || !inputEmail || !inputPassword){
+        errors.push({ message: "Por favor rellenar todos los campos"})
+    }
+
+    if (inputPassword.length < 8) {
+        errors.push({ message: "La contraseña de minimo 8 caracateres"})
+    }
+
+    if (errors.length > 0){
+        res.render("singUpUser", { errors })
+    }
+})
+
 app.use('/mandeapp', personas);
 
 const server = app.listen(port, () =>{
