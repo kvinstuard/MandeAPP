@@ -1,26 +1,8 @@
-const { error } = require('console');
 const pool = require('../models/postgreDB');
 const queries = require('./queries');
 const bcrypt = require('bcrypt');
-const session = require('express-session');
-const flash = require('express-flash');
 
-/*
-const getPersonas = (req, res) => {
-    pool.query(queries.getPersonas, (error, results) =>{
-        if (error) throw error;
-        res.status(200).json(results.rows); 
-    });
-};
 
-const getPersonaByID = (req, res) => {
-    const ID = parseInt(req.params.ID);
-    pool.query(queries.getPersonaByID, [ID], (error, results) =>{
-        if (error) throw error;
-        res.status(200).json(results.rows);
-    })
-}
-*/
 //async -> necesario para llamar 'await', hace la consulta pero no espera el resultado
 //trabajador -specialista
 const getSpecialist = async (req, res) => {
@@ -85,29 +67,6 @@ const getUser = async (req, res) => {
     res.status(200).json(response.rows);
 }
 
-/*
-const createUser = async (req, res)=>{
-    if(!req.body.inputname || !req.body.inputlastn || !req.body.inputid || !req.body.inputaddres
-        || !req.body.inputphone || !req.body.inputemail || !req.body.inputpass){
-            res.sendStatus(400).send('Llenar todos los campos');
-        }
-       let nuevo = {
-         name: req.body.inputname,
-         lastname: req.body.inputlastn,
-         id: req.body.inputid,
-         address: req.body.inputaddres,
-         phone: req.body.inputphone,
-         email: req.body.inputemail,
-         password: req.body.inputpass
-       }
-       console.log(nuevo);
-    
-       const response = await pool.query(queries.createUser,
-        [nuevo.name, nuevo.lastname, nuevo.id, nuevo.address, nuevo.email, nuevo.phone]);
-        console.log(response);
-        res.redirect('/user');
-}
-*/
 const createUser = async (req, res) => {
 
     let { inputName, inputLastName, inputIdentification, inputAddress, inputPhoneNumber, inputEmail, inputPassword } = req.body
@@ -151,12 +110,12 @@ const createUser = async (req, res) => {
                 res.render('singUpUser', { errors });
             } else {
                 pool.query(queries.createUser + 'RETURNING ID, password', [inputName, inputLastName,
-                    inputIdentification, inputAddress, inputPhoneNumber, inputEmail, inputPassword], (err, results) => {
+                    inputIdentification, inputAddress, inputPhoneNumber, inputEmail, hashedPassword], (err, results) => {
                         if (err) {
                             throw err;
                         }
                         console.log(results.rows);
-                        req.flash('sussess_msg', "Ya estas registrado por favor ingresa a la app");
+                        req.flash('success_msg', 'Ya estas registrado por favor ingresa a la app');
                         res.redirect('/login');
                     });
             }
@@ -166,9 +125,15 @@ const createUser = async (req, res) => {
 
     }
 }
-
-
-
+/*
+const getUserByID = (req, res) => {
+    const ID = parseInt(req.params.ID);
+    pool.query(queries.getPersonaByID, [ID], (error, results) =>{
+        if (error) throw error;
+        res.status(200).json(results.rows);
+    })
+}
+*/
 
 module.exports = {
     getSpecialist,
@@ -178,5 +143,6 @@ module.exports = {
     deleteSpecialist,
 
     createUser,
-    getUser
+    getUser,
+    //getUserByID
 }

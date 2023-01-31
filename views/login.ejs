@@ -16,38 +16,60 @@
 <body>
 
 
+
     <div class="container w-75 bg-light mt-5 rounded">
         <div class="row align-items-stretch">
             <div class="col bg d-none d-lg-block"></div>
 
             <div class="col">
                 <h3 class="fw-bold py-5 ">LOG IN</h3>
-                <div class="mb-4 ">
-                    <label for="labelNombre" class="form-label">Email</label>
-                    <input type="text" class="form-control" id="DirecciónCorreo" v-model="DirecciónCorreo">
-                </div>
-                <div class="mb-4 ">
-                    <label for="labelNombre" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="Contraseña" v-model="Contraseña">
-                </div>
 
-                <div class="mb-4 ">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Client</option>
-                        <option value="1">Specialist</option>
+                <ul>
+                    <% if(messages.success_msg) { %>
+                        <li>
+                            <%= messages.success_msg %>
+                        </li>
+                        <% } %>
+                </ul>
 
-                    </select>
-                </div>
+                <ul>
+                    <% if(messages.error) { %>
+                        <li>
+                            <%= messages.error %>
+                        </li>
+                        <% } %>
+                </ul>
 
-                <div class="d-grid py-5">
+                <form method="POST">
+                    <div class="mb-4 ">
+                        <label for="labelNombre" class="form-label">Email</label>
+                        <input name="inputEmail" type="text" class="form-control" id="DirecciónCorreo"
+                            v-model="DirecciónCorreo">
+                    </div>
 
-                    <button type="button" class="btn btn-dark"
-                        style="--bs-btn-padding-y: 0.75rem; --bs-btn-padding-x: 1rem; --bs-btn-font-size: 1rem;">
-                        LOG IN
-                    </button>
+                    <div class="mb-4 ">
+                        <label for="labelNombre" class="form-label">Password</label>
+                        <input name="inputPassword" type="password" class="form-control" id="Contraseña"
+                            v-model="Contraseña">
+                    </div>
 
-                </div>
+                    <div class="mb-4 ">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Client</option>
+                            <option value="1">Specialist</option>
 
+                        </select>
+                    </div>
+
+                    <div class="d-grid py-5">
+
+                        <button type="submit" class="btn btn-dark"
+                            style="--bs-btn-padding-y: 0.75rem; --bs-btn-padding-x: 1rem; --bs-btn-font-size: 1rem;">
+                            LOG IN
+                        </button>
+
+                    </div>
+                </form>
             </div>
         </div>
     </div>
