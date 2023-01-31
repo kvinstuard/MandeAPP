@@ -1,18 +1,22 @@
-const getPersonas = 'SELECT * FROM personas';
-const getPersonaByID = 'SELECT * FROM personas WHERE ID = $1'; 
-const getTrabajador = 'SELECT * FROM trabajador';
-const getTrabajadorById = 'SELECT * FROM trabajador WHERE cedula = $1';
-const createTrabajador = 'INSERT INTO trabajador(nombre, apellido, cedula, direccion, numero_cuenta, celular, calificacion) VALUES ($1, $2, $3, $4, $5, $6, $7)';
-const updateTrabajador = 'UPDATE trabajador SET nombre = $1, direccion = $2, numero_cuenta = $3 WHERE cedula = $4';
-const deleteTrabajador = 'DELETE FROM trabajador WHERE cedula = $1';
+const getUser = 'SELECT * FROM personas';
+const createUser = 'INSERT INTO personas(name, last_name, ID, address, phone_number, email, password) VALUES ($1, $2, $3, $4, $5, $6, $7)';
+const getUserByID = 'SELECT * FROM personas WHERE ID = $1'; 
+const getSpecialist = 'SELECT * FROM trabajador';
+const getSpecialistById = 'SELECT * FROM trabajador WHERE ID = $1';
+const createSpecialist = 'INSERT INTO trabajador(name, last_name, ID, address, phone_number, email, password) VALUES ($1, $2, $3, $4, $5, $6, $7)';
+const updateSpecialist = 'UPDATE trabajador SET name = $1, address = $2, email = $3 WHERE ID = $4';
+const deleteSpecialist = 'DELETE FROM trabajador WHERE ID = $1';
+const checkEmailExist = 'SELECT s FROM personas s WHERE s.email = $1';
 
 module.exports = {
-    getPersonas,
-    getPersonaByID,
-    getTrabajador,
-    getTrabajadorById,
-    createTrabajador,
-    updateTrabajador,
-    deleteTrabajador,
+    getUser,
+    createUser,
+    getUserByID,
+    getSpecialist,
+    getSpecialistById,
+    createSpecialist,
+    updateSpecialist,
+    deleteSpecialist,
+    checkEmailExist,
     
 }

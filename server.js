@@ -1,6 +1,8 @@
 const express = require('express');
-const personas = require('./routes/routes');
-const { pool } = require('./models/postgreDB');
+const rutas = require('./routes/routes');
+const {pool} = require('./models/postgreDB');
+const session = require('express-session');
+const flash = require('express-flash');
 
 const app = express();
 const port = 3000;
@@ -19,6 +21,16 @@ app.use(
         type: "*/*"
     })
 );
+
+app.use(session({
+    secret: 'secret',
+
+    resave: false,
+
+    saveUninitialized: false
+}))
+
+app.use(flash());
 
 app.set('view engine', 'ejs');
 
@@ -46,35 +58,9 @@ app.get('/login',(req, res)=>{
     res.render('login');
 });
 
-app.post("/userSingup", (req, res)=>{
-    let {inputName, inputLastName, inputIdentification, inputAddress, inputPhoneNumber, inputEmail, inputPassword}=req.body
+app.post("/userSingup", rutas)
 
-    console.log({
-        inputName, 
-        inputLastName, 
-        inputIdentification, 
-        inputAddress, 
-        inputPhoneNumber, 
-        inputEmail, 
-        inputPassword
-    })
-
-    let errors = [];
-
-    if (!inputName || !inputLastName || !inputIdentification || !inputAddress || !inputPhoneNumber || !inputEmail || !inputPassword){
-        errors.push({ message: "Por favor rellenar todos los campos"})
-    }
-
-    if (inputPassword.length < 8) {
-        errors.push({ message: "La contraseña de minimo 8 caracateres"})
-    }
-
-    if (errors.length > 0){
-        res.render("singUpUser", { errors })
-    }
-})
-
-app.use('/mandeapp', personas);
+app.use('/test', rutas);
 
 const server = app.listen(port, () =>{
     let host = server.address().address;

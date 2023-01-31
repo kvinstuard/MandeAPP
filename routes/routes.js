@@ -3,17 +3,17 @@ const controller = require('./controllers');
 
 const router = Router();
 
-router.get('/', controller.getPersonas);
-router.get('/:ID', controller.getPersonaByID);
+router.get('/user', controller.getUser);
 
-//router.get('/trabajador', controller.getTrabajador);//traer info
+//router.get('/user/:ID', controller.getUserByID);
 
-//router.post('/trabajador/singup', controller.createTrabajador); //crear info
+router.get('/specialist', controller.getSpecialist);
 
-//router.get('/trabajador/:id', controller.getTrabajadorById); //traer infor por cedula
+router.post('/specialistSingup', controller.createSpecialist); 
+router.post('/userSingup', controller.createUser);
 
-//router.delete('/trabajador/:id', controller.deleteTrabajador);
-
-//router.put('/trabajador/:id', controller.updateTrabajador);
+//router.get('/trabajador/:id', getTrabajadorById) //traer infor por cedula
+//router.delete('/trabajador/:id', deleteTrabajador)
+//router.put('/trabajador/:id',updateTrabajador)
 
 module.exports = router;
