@@ -12,8 +12,8 @@ const pool = new Pool({
 
 
 
-//async -> necesario para llamar 'await', hace la consulta pero no espera el resultado
-const getTrabajador = async (req,res)=>{
+//trabajador -specialista
+const getSpecialist = async (req,res)=>{
    const response = await pool.query('SELECT * FROM trabajador'); //await : notificar de consulta asicrona
    console.log('good');
    res.status(200).json(response.rows);
@@ -24,7 +24,7 @@ const getTrabajadorById = async (req, res) =>{
     const response = await pool.query('SELECT * FROM trabajador WHERE cedula = $1', [id]);
     res.json(response.rows);
 } 
-const createTrabajador = async (req, res)=>{
+const createSpecialist = async (req, res)=>{
     if(!req.body.inputname || !req.body.inputlastn || !req.body.inputid || !req.body.inputaddres
         || !req.body.inputphone || !req.body.inputemail || !req.body.inputpass){
             res.sendStatus(400).send('Llenar todos los campos');
@@ -44,7 +44,7 @@ const createTrabajador = async (req, res)=>{
        const response = await pool.query('INSERT INTO trabajador(nombre, apellido, cedula, direccion, numero_cuenta, celular, calificacion) VALUES ($1, $2, $3, $4, $5, $6, $7)',
         [nuevo.name, nuevo.lastname, nuevo.id, nuevo.address, nuevo.email, nuevo.phone, nuevo.password]);
         console.log(response);
-        res.redirect('/');
+        res.redirect('/specialist');
 }
 const updateTrabajador = async (req, res)=>{
     const id = req.params.id;
@@ -66,11 +66,48 @@ const deleteTrabajador = async (req, res)=>{
 }
 
 
+//user
+
+
+const getUser = async (req,res)=>{
+    const response = await pool.query('SELECT * FROM usuario'); //await : notificar de consulta asicrona
+    console.log('good');
+    res.status(200).json(response.rows);
+ }
+
+
+const createUser = async (req, res)=>{
+    if(!req.body.inputname || !req.body.inputlastn || !req.body.inputid || !req.body.inputaddres
+        || !req.body.inputphone || !req.body.inputemail || !req.body.inputpass){
+            res.sendStatus(400).send('Llenar todos los campos');
+        }
+       let nuevo = {
+         name: req.body.inputname,
+         lastname: req.body.inputlastn,
+         id: req.body.inputid,
+         address: req.body.inputaddres,
+         phone: req.body.inputphone,
+         email: req.body.inputemail,
+         password: req.body.inputpass
+       }
+       console.log(nuevo);
+    
+       const response = await pool.query('INSERT INTO usuario(nombre, apellido, cedula, direccion, email, celular) VALUES ($1, $2, $3, $4, $5, $6)',
+        [nuevo.name, nuevo.lastname, nuevo.id, nuevo.address, nuevo.email, nuevo.phone]);
+        console.log(response);
+        res.redirect('/user');
+}
+
+
+
 
 module.exports = {
-    getTrabajador,
+    getSpecialist,
     getTrabajadorById,
-    createTrabajador,
+    createSpecialist,
     updateTrabajador,
-    deleteTrabajador
+    deleteTrabajador,
+
+    createUser,
+    getUser
 }
