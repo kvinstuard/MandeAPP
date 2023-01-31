@@ -102,6 +102,14 @@ const getUser = async (req, res) => {
     res.status(200).json(response.rows);
 }
 
+const deleteUser = async (req, res) => {
+    const id = req.params.id;
+    const response = pool.query(queries.deleteUser, [id]);
+    console.log(response);
+    res.json(`User ${id} deleted successfully`);
+}
+
+
 const createUser = async (req, res) => {
 
     let { inputName, inputLastName, inputIdentification, inputAddress, inputPhoneNumber, inputEmail, inputPassword } = req.body
@@ -179,5 +187,6 @@ module.exports = {
 
     createUser,
     getUser,
+    deleteUser
     //getUserByID
 }
