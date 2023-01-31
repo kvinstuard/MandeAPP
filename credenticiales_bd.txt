@@ -1,0 +1,4 @@
+Server: mandeposgrest
+ADMIN: mandeadmin
+CLAVE:Posgrest@
+
