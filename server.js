@@ -1,13 +1,21 @@
 const express = require('express');
-const personas = require('./routes/routes');
+const rutas = require('./routes/routes');
 const { pool } = require('./models/postgreDB');
+const session = require('express-session');
+const flash = require('express-flash');
+const passport = require('passport');
+
+const initializedPassport = require('./models/passportConfig')
+
+initializedPassport(passport);
 
 const app = express();
 const port = 3000;
 
 app.use(
     express.urlencoded({
-        extended: true})
+        extended: true
+    })
 )
 
 app.use(express.static('public'));
@@ -20,13 +28,26 @@ app.use(
     })
 );
 
+app.use(session({
+    secret: 'secret',
+
+    resave: false,
+
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(flash());
+
 app.set('view engine', 'ejs');
 
-app.get('/',(req, res)=>{
+app.get('/', (req, res) => {
     res.render('mandeApp');
 });
 
-app.get('/user',(req, res)=>{
+app.get('/user', (req, res) => {
     res.render('menuUser');
 });
 
@@ -34,55 +55,33 @@ app.get('/findSpecialist',(req, res)=>{
     res.render('findSpecialist');
 });
 
-app.get('/userSingup',(req, res)=>{
+app.get('/userSingup', (req, res) => {
     res.render('singUpUser');
 });
 
-app.get('/specialist',(req, res)=>{
+app.get('/specialist', (req, res) => {
     res.render('menuSpecialist');
 });
 
-
-
-app.get('/specialisSingup',(req, res)=>{
+app.get('/specialisSingup', (req, res) => {
     res.render('singUpSpecialist');
 });
 
-app.get('/login',(req, res)=>{
+app.get('/login', (req, res) => {
     res.render('login');
 });
 
-app.post("/userSingup", (req, res)=>{
-    let {inputName, inputLastName, inputIdentification, inputAddress, inputPhoneNumber, inputEmail, inputPassword}=req.body
+app.post('/userSingup', rutas);
 
-    console.log({
-        inputName, 
-        inputLastName, 
-        inputIdentification, 
-        inputAddress, 
-        inputPhoneNumber, 
-        inputEmail, 
-        inputPassword
-    })
+app.post('/login', passport.authenticate('local', {
+    successRedirect: '/findSpecialist',
+    failureRedirect: '/login',
+    failureFlash: true
+}));
 
-    let errors = [];
+app.use('/test', rutas);
 
-    if (!inputName || !inputLastName || !inputIdentification || !inputAddress || !inputPhoneNumber || !inputEmail || !inputPassword){
-        errors.push({ message: "Por favor rellenar todos los campos"})
-    }
-
-    if (inputPassword.length < 8) {
-        errors.push({ message: "La contraseña de minimo 8 caracateres"})
-    }
-
-    if (errors.length > 0){
-        res.render("singUpUser", { errors })
-    }
-})
-
-app.use('/mandeapp', personas);
-
-const server = app.listen(port, () =>{
+const server = app.listen(port, () => {
     let host = server.address().address;
     let port = server.address().port;
     console.log("Mande App listening at http://", host, port)
