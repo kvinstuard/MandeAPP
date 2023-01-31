@@ -31,7 +31,7 @@ app.get('/user',(req, res)=>{
 });
 
 app.get('/findSpecialist',(req, res)=>{
-    res.render('FindSpecialist');
+    res.render('findSpecialist');
 });
 
 app.get('/userSingup',(req, res)=>{
@@ -41,6 +41,8 @@ app.get('/userSingup',(req, res)=>{
 app.get('/specialist',(req, res)=>{
     res.render('menuSpecialist');
 });
+
+
 
 app.get('/specialisSingup',(req, res)=>{
     res.render('singUpSpecialist');
