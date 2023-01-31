@@ -65,6 +65,34 @@ div.Recibo{
 }
 
 
+div.Rool{
+  width: 30vw ;
+}
+
+div.RoolContainer{
+  padding-top: 1cm;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+div.NextButtonContainer{
+  padding-top: 3cm;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+div.FindSpecialistText{
+  padding-top: 2cm;
+  display: flex;
+  justify-content: center;
+}
+
+
 
 img{
   border-radius: 50%;
