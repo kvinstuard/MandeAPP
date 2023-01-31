@@ -51,6 +51,10 @@ app.get('/user', (req, res) => {
     res.render('menuUser');
 });
 
+app.get('/findSpecialist',(req, res)=>{
+    res.render('findSpecialist');
+});
+
 app.get('/userSingup', (req, res) => {
     res.render('singUpUser');
 });
@@ -70,7 +74,7 @@ app.get('/login', (req, res) => {
 app.post('/userSingup', rutas);
 
 app.post('/login', passport.authenticate('local', {
-    successRedirect: '/user',
+    successRedirect: '/findSpecialist',
     failureRedirect: '/login',
     failureFlash: true
 }));
