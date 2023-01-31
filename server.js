@@ -30,6 +30,10 @@ app.get('/user',(req, res)=>{
     res.render('menuUser');
 });
 
+app.get('/findSpecialist',(req, res)=>{
+    res.render('FindSpecialist');
+});
+
 app.get('/userSingup',(req, res)=>{
     res.render('singUpUser');
 });
