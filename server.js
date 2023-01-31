@@ -22,6 +22,9 @@ app.use(express.static('public'));
 
 app.use(express.static('Images'));
 
+app.use(express.static('scripts'));
+
+
 app.use(
     express.json({
         type: "*/*"
@@ -44,6 +47,10 @@ app.use(flash());
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
+    res.render('animation');
+});
+
+app.get('/mandeApp', (req, res) => {
     res.render('mandeApp');
 });
 
@@ -62,6 +69,7 @@ app.get('/userSingup', (req, res) => {
 app.get('/specialist', (req, res) => {
     res.render('menuSpecialist');
 });
+
 
 app.get('/specialisSingup', (req, res) => {
     res.render('singUpSpecialist');
