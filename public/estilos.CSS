@@ -20,7 +20,9 @@ div.metodoDePago {
   height: 8vw;
 }
 
-
+li{
+  color: antiquewhite;
+}
 
 div.separador {
   height: 15%;

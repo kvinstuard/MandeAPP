@@ -44,7 +44,7 @@
             <div class="col">
                 <div class="mb-3 row">
                     <div class="col">
-                    <form method="POST">
+                    <form method="POST" enctype="multipart/form-data">
                         <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
                             <input name="inputName" type="text" class="form-control" id="inputName">
@@ -151,10 +151,12 @@
 
                 <div class="Avatar">
                     <img src="avatar.jpg" alt="">
-                    <button type="button" class="btn btn-dark"
-                        style="--bs-btn-padding-y: 0.70rem; --bs-btn-padding-x: 0.72rem; --bs-btn-font-size: 0.72rem; height: 8%;">
+                    <input name ='inputPhoto' type = 'file'>
+                    <button type="submit" class="btn btn-dark"
+                    style="--bs-btn-padding-y: 0.70rem; --bs-btn-padding-x: 0.72rem; --bs-btn-font-size: 0.72rem; height: 8%;">>
                         Photo
-                    </button>
+                    </button>    
+                    
                 </div>
 
             </div>
@@ -172,24 +174,10 @@
                 <div class="botonDebito">
                     <button type="button" class="btn btn-dark"
                         style="--bs-btn-padding-y: 1rem; --bs-btn-padding-x: 1rem; --bs-btn-font-size: 2rem; ">
-                        Debito
-                    </button>
-                </div>
-
-
-            </div>
-
-            <div class="col">
-
-                <div class="botonCredito">
-                    <button type="button" class="btn btn-dark"
-                        style="--bs-btn-padding-y: 1rem; --bs-btn-padding-x: 1rem; --bs-btn-font-size: 2rem; ">
-                        Credito
+                        Metodo de pago
                     </button>
                 </div>
             </div>
-
-
         </div>
 
         <div class="BotonReady">

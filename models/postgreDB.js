@@ -18,4 +18,4 @@ const pool = new Pool({
     password: 'Posgrest@'
 });
 
-module.exports = pool;
+module.exports = pool;   

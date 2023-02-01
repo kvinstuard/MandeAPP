@@ -58,7 +58,7 @@ const createSpecialist = async (req, res) => {
                 res.render('singUpSpecialist', { errors });
             } else {
                 pool.query(queries.createSpecialist + 'RETURNING ID, password', [inputName, inputLastName,
-                    inputIdentification, inputAddress, inputPhoneNumber, inputEmail, hashedPassword], (err, results) => {
+                    inputIdentification, inputAddress, inputPhoneNumber, inputEmail, hashedPassword, req.file.path], (err, results) => {
                         if (err) {
                             throw err;
                         }
@@ -121,8 +121,9 @@ const createUser = async (req, res) => {
         inputAddress,
         inputPhoneNumber,
         inputEmail,
-        inputPassword
+        inputPassword,
     })
+    console.log(req.file.path); 
 
     let errors = [];
 
@@ -153,7 +154,7 @@ const createUser = async (req, res) => {
                 res.render('singUpUser', { errors });
             } else {
                 pool.query(queries.createUser + 'RETURNING ID, password', [inputName, inputLastName,
-                    inputIdentification, inputAddress, inputPhoneNumber, inputEmail, hashedPassword], (err, results) => {
+                    inputIdentification, inputAddress, inputPhoneNumber, inputEmail, hashedPassword, req.file.path], (err, results) => {
                         if (err) {
                             throw err;
                         }
