@@ -36,7 +36,7 @@ CREATE TABLE payment_method(
 	expiration_date DATE NOT NULL,
 	cvv INTEGER NOT NULL,
 	PRIMARY KEY(card_number, cvv),
-	phone_number VARCHAR(30) NOT NULL
+	phone_number VARCHAR(30)	
 );
 
 

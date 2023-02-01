@@ -123,7 +123,21 @@ const createUser = async (req, res) => {
         inputEmail,
         inputPassword,
     })
-    console.log(req.file.path); 
+
+    let{formSelect, inputCardNumber, inputExpiratonDate, inputCVV} = req.body
+    if(formSelect = 1){
+        formSelect = 'debito'
+    }else{
+        formSelect = 'credito'
+    }
+
+    pool.query(queries.createCard, [formSelect, inputCardNumber,
+        inputExpiratonDate, inputCVV, inputPhoneNumber], (err, results) => {
+            if (err) {
+                throw err;
+            }
+            console.log(results.rows);
+        });
 
     let errors = [];
 

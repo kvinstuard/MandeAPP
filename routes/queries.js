@@ -8,16 +8,18 @@ const updateSpecialist = 'UPDATE specialist SET name = $1, address = $2, email =
 const deleteSpecialist = 'DELETE FROM specialist WHERE ID = $1';
 const deleteUser = 'DELETE FROM usuario WHERE ID = $1';
 const checkEmailExist = 'SELECT * FROM usuario WHERE email = $1';
+const createCard = 'INSERT INTO payment_method(type_card, card_number, expiration_date, cvv, phone_number) VALUES ($1,$2,$3,$4, $5)';
 
 module.exports = {
     getUser,
     createUser,
     getUserByID,
     getSpecialist,
-    getSpecialistById,
+    getSpecialistById, 
     createSpecialist,
     updateSpecialist,
-    deleteSpecialist,
+    deleteSpecialist, 
     deleteUser,
-    checkEmailExist
+    checkEmailExist,
+    createCard
 }
