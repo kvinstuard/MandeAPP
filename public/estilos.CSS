@@ -17,10 +17,24 @@ div.titulo {
 
 div.metodoDePago {
   text-align: center;
-  height: 8vw;
+  height: 2vw;
+}
+
+div.inputCVV{
+  width: 15vw;
 }
 
 
+div.inputExpiratonDate{
+  width: 15vw;
+}
+
+
+
+div.inputPassword{
+  width: 15vw;
+
+}
 
 div.separador {
   height: 15%;
@@ -32,15 +46,6 @@ div.botonDeLogin {
 
 }
 
-div.botonCredito {
-  align-items: center;
-  text-align: left;
-}
-
-div.botonDebito {
-  align-items: center;
-  text-align: right;
-}
 
 div.SeparadorAvatar {
   height: 10vw;
@@ -96,6 +101,14 @@ div.JobDescription{
  
 }
 
+div.BotonReady{
+  padding-top: 4vw;
+  padding-bottom: 10vw;
+  display: flex;
+  justify-content: end;
+}
+
+
 
 div.FindSpecialistText {
   padding-top: 2cm;
@@ -103,7 +116,9 @@ div.FindSpecialistText {
   justify-content: center;
 }
 
-
+li{
+  color: aliceblue;
+}
 
 img {
   border-radius: 50%;

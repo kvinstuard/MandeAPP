@@ -36,19 +36,23 @@
         <div class="row py-5">
 
             <ul>
-                <% if(typeof errors != 'undefined') { %> <% errors.forEach(error=>{ %> 
-                    <li><%= error.message %></li>
-                <% }) %> <% } %>
+                <% if(typeof errors !='undefined' ) { %>
+                    <% errors.forEach(error=>{ %>
+                        <li>
+                            <%= error.message %>
+                        </li>
+                        <% }) %>
+                            <% } %>
             </ul>
 
             <div class="col">
                 <div class="mb-3 row">
                     <div class="col">
-                    <form method="POST">
-                        <label for="inputName" class="col-sm-2 col-form-label">Name</label>
-                        <div class="col-sm-10">
-                            <input name="inputName" type="text" class="form-control" id="inputName">
-                        </div>
+                        <form method="POST">
+                            <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                            <div class="col-sm-10">
+                                <input name="inputName" type="text" class="form-control" id="inputName">
+                            </div>
 
                     </div>
                 </div>
@@ -169,37 +173,92 @@
 
             <div class="col">
 
-                <div class="botonDebito">
-                    <button type="button" class="btn btn-dark"
-                        style="--bs-btn-padding-y: 1rem; --bs-btn-padding-x: 1rem; --bs-btn-font-size: 2rem; ">
-                        Debito
-                    </button>
+                <div class="mb-3 row">
+
+                    <div class="col">
+
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Type Card</label>
+                        <select class="form-select" aria-label="Default select example">
+
+                            <option selected value="0">NONE</option>
+
+                            <option value="1">Debit</option>
+
+                            <option value="2">Credit</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="mb-3 row">
+
+                    <div class="col">
+
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Card Number</label>
+
+                        <input name="inputCardNumber" type="text" class="form-control" id="inputCardNumber">
+
+
+                    </div>
+
+                </div>
+
+                <div class="mb-3 row">
+
+                    <div class="col">
+
+                        <label for="inputPassword" class="col-sm-3 col-form-label">Expiration Date</label>
+
+                        <div class="inputExpiratonDate">
+                            <input name="inputExpiratonDate" type="text" class="form-control" id="inputExperationDate">
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="mb-3 row">
+
+                    <div class="col">
+
+                        <label for="inputPassword" class="col-sm-2 col-form-label">CVV</label>
+
+                        <div class="inputCVV">
+                            <input name="inputCVV" type="text" class="form-control" id="inputCVV">
+                        </div>
+                        
+
+
+                    </div>
+
                 </div>
 
 
             </div>
 
+
+
             <div class="col">
 
-                <div class="botonCredito">
-                    <button type="button" class="btn btn-dark"
-                        style="--bs-btn-padding-y: 1rem; --bs-btn-padding-x: 1rem; --bs-btn-font-size: 2rem; ">
-                        Credito
-                    </button>
-                </div>
             </div>
 
 
         </div>
 
+
         <div class="BotonReady">
             <button type="submit" class="btn btn-dark"
-                style="--bs-btn-padding-y: 0.70rem; --bs-btn-padding-x: 0.72rem; --bs-btn-font-size: 1rem; height: 8%;">
+                style="--bs-btn-padding-y: 0.70rem; --bs-btn-padding-x: 0.72rem; --bs-btn-font-size: 2rem; height: 8%;">
                 Ready
             </button>
         </div>
 
         </form>
+
         <div class="Final">
 
         </div>
