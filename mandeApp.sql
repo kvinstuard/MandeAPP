@@ -7,7 +7,7 @@ CREATE TABLE person(
 );
 
 CREATE TABLE usuario(
-	utility_bills BYTEA, 
+	utility_bills TEXT, 
 	phone_number VARCHAR(30) UNIQUE NOT NULL,
 	email VARCHAR(90) UNIQUE NOT NULL,
 	id VARCHAR(20) PRIMARY KEY NOT NULL
@@ -19,7 +19,7 @@ CREATE TABLE specialist(
 	email VARCHAR(90) UNIQUE NOT NULL,
 	id VARCHAR(20) PRIMARY KEY NOT NULL,
 	rate DECIMAL,
-	id_image BYTEA
+	id_image TEXT
 ) inherits (person);
 
 CREATE TABLE task(
@@ -48,7 +48,6 @@ CREATE TABLE services(
 	ON DELETE RESTRICT
 );
 
-DROP TABLE task CASCADE
 
 
 
