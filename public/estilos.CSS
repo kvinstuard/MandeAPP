@@ -64,11 +64,13 @@ div.Avatar {
 
   display: flex;
   flex-direction: row-reverse;
+  width: 36vw;
 
 }
 
 div.Recibo {
   display: flex;
+  width: 36vw;
 
 }
 
