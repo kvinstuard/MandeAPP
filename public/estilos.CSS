@@ -1,3 +1,140 @@
+<<<<<<< HEAD
+body {
+  background-color: #373737;
+  height: 550px;
+  align-items: center;
+}
+
+nav {
+  text-align: center;
+}
+
+
+div.titulo {
+  text-align: center;
+  height: 8vw;
+}
+
+
+div.metodoDePago {
+  text-align: center;
+  height: 2vw;
+}
+
+div.inputCVV{
+  width: 15vw;
+}
+
+
+div.inputExpiratonDate{
+  width: 15vw;
+}
+
+
+
+div.inputPassword{
+  width: 15vw;
+
+}
+
+div.separador {
+  height: 15%;
+}
+
+div.botonDeLogin {
+  display: flex;
+  flex-direction: column-reverse;
+
+}
+
+
+div.SeparadorAvatar {
+  height: 10vw;
+}
+
+span.navbar-brand {
+  color: #ffa500;
+  text-align: center;
+  width: 100%;
+}
+
+div.Avatar {
+
+  display: flex;
+  flex-direction: row-reverse;
+
+}
+
+div.Recibo {
+  display: flex;
+
+}
+
+
+div.Rool {
+  width: 30vw;
+}
+
+div.RoolContainer {
+  padding-top: 1cm;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+div.NextButtonContainer {
+  padding-top: 10vw;
+  display: flex;
+  justify-content: center;
+}
+
+
+div.DescriptionContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 1cm;
+}
+
+div.JobDescription{
+  width: 60vw;
+ 
+}
+
+div.BotonReady{
+  padding-top: 4vw;
+  padding-bottom: 10vw;
+  display: flex;
+  justify-content: end;
+}
+
+
+
+div.FindSpecialistText {
+  padding-top: 2cm;
+  display: flex;
+  justify-content: center;
+}
+
+li{
+  color: aliceblue;
+}
+
+img {
+  border-radius: 50%;
+  width: 25vw;
+  height: 25vw;
+  object-fit: cover;
+}
+
+FONT {
+  color: azure;
+}
+
+label {
+  color: azure;
+=======
 body {
   background-color: #373737;
   height: 550px;
@@ -20,9 +157,7 @@ div.metodoDePago {
   height: 8vw;
 }
 
-li{
-  color: antiquewhite;
-}
+
 
 div.separador {
   height: 15%;
@@ -120,4 +255,5 @@ FONT {
 
 label {
   color: azure;
+>>>>>>> main
 }
